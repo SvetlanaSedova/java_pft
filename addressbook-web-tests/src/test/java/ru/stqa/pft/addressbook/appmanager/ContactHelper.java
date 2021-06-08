@@ -28,4 +28,17 @@ public class ContactHelper extends  HelperBase {
     type(By.name("mobile"),contactData.getPhoneMobile());
     type(By.name("email"),contactData.getEmail());
   }
+
+  public void selectContact() {
+    click(By.xpath("//input[@type='checkbox']"));
+  }
+
+  public void editContact() {
+//    click(By.xpath("//td//img[@title='Edit']"));
+    click(By.xpath("//img[@title='Edit']"));
+  }
+
+  public void submitContactModification() {
+    click(By.xpath("//input[@value='Update']"));
+  }
 }
