@@ -2,7 +2,11 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends  HelperBase {
 
@@ -29,13 +33,12 @@ public class ContactHelper extends  HelperBase {
     type(By.name("email"),contactData.getEmail());
   }
 
-  public void selectContact() {
-    click(By.xpath("//input[@type='checkbox']"));
+  public void selectContact(int index) {
+    wd.findElements(By.xpath("//td/input[@type='checkbox']")).get(index).click();
   }
 
-  public void editContact() {
-//    click(By.xpath("//td//img[@title='Edit']"));
-    click(By.xpath("//img[@title='Edit']"));
+  public void editContact(int index) {
+    wd.findElements(By.xpath("//img[@title='Edit']")).get(index).click();
   }
 
   public void submitContactModification() {
@@ -55,5 +58,23 @@ public class ContactHelper extends  HelperBase {
     fillAddingContactForm(contactData);
     submitAddingContact();
     returnHomePage();
+  }
+
+  public int getContactCount() {
+    return wd.findElements(By.xpath("//td/input[@type='checkbox']")).size();
+  }
+
+
+    public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement>elements = wd.findElements(By.xpath("//tr[@name=\"entry\"]")); // список строк с контактами
+    for (WebElement element: elements){
+      String lastName = element.findElement(By.xpath("./td[2]")).getText();
+      String firstName = element.findElement(By.xpath("./td[3]")).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value")) ;
+      ContactData contact = new ContactData(id, firstName, null, lastName, null, null, null, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
   }
 }
