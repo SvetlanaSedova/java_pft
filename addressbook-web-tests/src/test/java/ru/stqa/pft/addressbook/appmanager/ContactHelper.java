@@ -8,14 +8,14 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactHelper extends  HelperBase {
+public class ContactHelper extends HelperBase {
 
   public ContactHelper(WebDriver wd) {
     super(wd);
   }
 
   public void returnHomePage() {
-   click(By.linkText("home"));
+    click(By.linkText("home"));
   }
 
   public void submitAddingContact() {
@@ -23,17 +23,17 @@ public class ContactHelper extends  HelperBase {
   }
 
   public void fillAddingContactForm(ContactData contactData) {
-    type(By.name("firstname"),contactData.getFirstName());
-    type(By.name("middlename"),contactData.getMiddleName());
-    type(By.name("lastname"),contactData.getLastName());
-    type(By.name("nickname"),contactData.getNick());
-    type(By.name("address"),contactData.getAddress());
-    type(By.name("home"),contactData.getPhoneHome());
-    type(By.name("mobile"),contactData.getPhoneMobile());
-    type(By.name("email"),contactData.getEmail());
+    type(By.name("firstname"), contactData.getFirstName());
+    type(By.name("middlename"), contactData.getMiddleName());
+    type(By.name("lastname"), contactData.getLastName());
+    type(By.name("nickname"), contactData.getNick());
+    type(By.name("address"), contactData.getAddress());
+    type(By.name("home"), contactData.getPhoneHome());
+    type(By.name("mobile"), contactData.getPhoneMobile());
+    type(By.name("email"), contactData.getEmail());
   }
 
-  public void selectContact(int index) {
+  public void select(int index) {
     wd.findElements(By.xpath("//td/input[@type='checkbox']")).get(index).click();
   }
 
@@ -49,41 +49,44 @@ public class ContactHelper extends  HelperBase {
     click(By.xpath("//input[@value='Delete']"));
     wd.switchTo().alert().accept();
   }
-  public void modifyContact(int index, ContactData contact) {
+
+  public void create(ContactData contactData) {
+    fillAddingContactForm(contactData);
+    submitAddingContact();
+    returnHomePage();
+  }
+
+  public void modify(int index, ContactData contact) {
     editContact(index);
     fillAddingContactForm(contact);
     submitContactModification();
     returnHomePage();
   }
 
-  public void deleteContact(int index) {
-    selectContact(index);
+  public void delete(int index) {
+    select(index);
     deleteSelectedContact();
     returnHomePage();
   }
+
 
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("//img[@title='Edit']"));
   }
 
-  public void createContact(ContactData contactData) {
-    fillAddingContactForm(contactData);
-    submitAddingContact();
-    returnHomePage();
-  }
 
   public int getContactCount() {
     return wd.findElements(By.xpath("//td/input[@type='checkbox']")).size();
   }
 
 
-    public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement>elements = wd.findElements(By.xpath("//tr[@name=\"entry\"]")); // список строк с контактами
-    for (WebElement element: elements){
+    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name=\"entry\"]")); // список строк с контактами
+    for (WebElement element : elements) {
       String lastName = element.findElement(By.xpath("./td[2]")).getText();
       String firstName = element.findElement(By.xpath("./td[3]")).getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value")) ;
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       ContactData contact = new ContactData(id, firstName, null, lastName, null, null, null, null, null);
       contacts.add(contact);
     }
