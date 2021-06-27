@@ -14,8 +14,9 @@ public class ContactDeletionTests extends TestBase {
     app.goTo().HomePage();
     if (!app.contact().isThereAContact()) {        // проверяем, есть ли контакты для изменения . если нет, то создае
       app.goTo().AddingNewContact();
-      app.contact().create(new ContactData("First_name_test", "Middle_name_test", "Last_name_test", "nick",
-              "address_test", "123456789", "987654321", "test@test.test"));
+      app.contact().create(new ContactData().withFirstName("First_name_test").withMiddleName("Middle_name_test")
+              .withLastName("Last_name_test").withNick("nick").withAddress("address_test")
+              .withPhoneHome("123456789").withPhoneMobile("987654321").withEmail("test@test.test"));
     }
   }
 

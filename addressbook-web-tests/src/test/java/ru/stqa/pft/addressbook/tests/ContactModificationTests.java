@@ -14,8 +14,9 @@ public class ContactModificationTests extends TestBase {
     app.goTo().HomePage();
     if (!app.contact().isThereAContact()) {        // проверяем, есть ли контакты для изменения . если нет, то создае
       app.goTo().AddingNewContact();
-      app.contact().create(new ContactData("First_name_test", "Middle_name_test", "Last_name_test", "nick",
-              "address_test", "123456789", "987654321", "test@test.test"));
+      app.contact().create(new ContactData().withFirstName("First_name_test").withMiddleName("Middle_name_test")
+              .withLastName("Last_name_test").withNick("nick").withAddress("address_test")
+              .withPhoneHome("123456789").withPhoneMobile("987654321").withEmail("test@test.test"));
     }
   }
 
@@ -23,9 +24,10 @@ public class ContactModificationTests extends TestBase {
   public void testContactModification() {
     List<ContactData> before = app.contact().list();  // получение старого списка контактов before
     int index = before.size() - 1;
-    ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "First_name_test1", "Middle_name_test1",
-            "Last_name_test1", "nick1", "address_test1",
-            "1234567891", "9876543211", "test1@test.test");
+    ContactData contact = new ContactData().withId(before.get(before.size() - 1).getId())
+            .withFirstName("First_name_test1").withMiddleName("Middle_name_test1")
+            .withLastName("Last_name_test1").withNick("nick1").withAddress("address_test1")
+            .withPhoneHome("1234567891").withPhoneMobile("9876543211").withEmail("test1@test.test");
     app.contact().modify(index, contact);
     List<ContactData> after = app.contact().list();     // получение нового списка  контактов after
     Assert.assertEquals(after.size(), before.size());

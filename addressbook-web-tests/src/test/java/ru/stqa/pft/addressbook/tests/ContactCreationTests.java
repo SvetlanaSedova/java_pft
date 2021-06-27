@@ -15,8 +15,9 @@ public class ContactCreationTests extends TestBase {
     app.goTo().HomePage();
     List<ContactData> before = app.contact().list();  // получение старого списка  контактов before
     app.goTo().AddingNewContact();
-    ContactData contact = new ContactData("First_name_test", "Middle_name_test",
-            "Last_name_test", "nick", "address_test", "123456789", "987654321", "test@test.test");
+    ContactData contact = new ContactData().withFirstName("First_name_test").withMiddleName("Middle_name_test")
+            .withLastName("Last_name_test").withNick("nick").withAddress("address_test").withPhoneHome("123456789")
+               .withPhoneMobile("987654321").withEmail("test@test.test");
     app.contact().create(contact);
     List<ContactData> after = app.contact().list();  // получение нового списка  контактов after
     Assert.assertEquals(after.size(), before.size() + 1);
