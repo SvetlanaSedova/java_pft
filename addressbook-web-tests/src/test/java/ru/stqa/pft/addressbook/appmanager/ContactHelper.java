@@ -5,8 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -33,12 +34,11 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail());
   }
 
-  public void select(int index) {
-    wd.findElements(By.xpath("//td/input[@type='checkbox']")).get(index).click();
-  }
+  private void selectById(int id) { wd.findElement(By.cssSelector("input[value='"+id+"']")).click(); }
 
-  public void editContact(int index) {
-    wd.findElements(By.xpath("//img[@title='Edit']")).get(index).click();
+
+  private void editContactByID(int id) {
+    wd.findElement(By.xpath("//input[@value='" + id + "'] //..//..//img[@title='Edit']")).click();
   }
 
   public void submitContactModification() {
@@ -56,18 +56,20 @@ public class ContactHelper extends HelperBase {
     returnHomePage();
   }
 
-  public void modify(int index, ContactData contact) {
-    editContact(index);
+  public void modify(ContactData modifiedContact, ContactData contact) {
+    editContactByID(modifiedContact.getId());
     fillAddingContactForm(contact);
     submitContactModification();
     returnHomePage();
   }
 
-  public void delete(int index) {
-    select(index);
+
+  public void delete(ContactData contact) {
+    selectById(contact.getId());
     deleteSelectedContact();
     returnHomePage();
   }
+
 
 
   public boolean isThereAContact() {
@@ -79,9 +81,8 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.xpath("//td/input[@type='checkbox']")).size();
   }
 
-
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name=\"entry\"]")); // список строк с контактами
     for (WebElement element : elements) {
       String lastName = element.findElement(By.xpath("./td[2]")).getText();
@@ -92,4 +93,6 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
+
+
 }
