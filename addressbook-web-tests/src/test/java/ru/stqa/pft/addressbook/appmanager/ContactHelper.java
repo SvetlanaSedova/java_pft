@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -32,6 +30,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getPhoneHome());
     type(By.name("mobile"), contactData.getPhoneMobile());
+    type(By.name("work"), contactData.getPhoneWork());
     type(By.name("email"), contactData.getEmail());
   }
 
