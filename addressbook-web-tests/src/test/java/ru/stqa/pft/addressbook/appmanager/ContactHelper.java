@@ -34,6 +34,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail());
     type(By.name("email2"), contactData.getEmailSecond());
     type(By.name("email3"), contactData.getEmailThird());
+    attach(By.name("photo"), contactData.getPhoto());
   }
 
   private void selectById(int id) {
