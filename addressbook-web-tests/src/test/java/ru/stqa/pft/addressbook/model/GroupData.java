@@ -19,7 +19,9 @@ public class GroupData {
   private String footer;
 
 
-  public int getId() { return id; }
+  public int getId() {
+    return id;
+  }
 
   public String getName() {
     return name;

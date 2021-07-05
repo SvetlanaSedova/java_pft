@@ -1,0 +1,122 @@
+<list>
+  <contact>
+    <firstName>LastName0</firstName>
+    <middleName>MiddleName0</middleName>
+    <lastName>FirstName0</lastName>
+    <nick>Nickname0</nick>
+    <address>Test address 0</address>
+    <phoneHome>001234</phoneHome>
+    <phoneMobile>011111</phoneMobile>
+    <phoneWork>022222</phoneWork>
+    <email>email0@test.test</email>
+    <photo>src\test\resources\stru.png</photo>
+  </contact>
+  <contact>
+    <firstName>LastName1</firstName>
+    <middleName>MiddleName1</middleName>
+    <lastName>FirstName1</lastName>
+    <nick>Nickname1</nick>
+    <address>Test address 1</address>
+    <phoneHome>101234</phoneHome>
+    <phoneMobile>111111</phoneMobile>
+    <phoneWork>122222</phoneWork>
+    <email>email1@test.test</email>
+    <photo>src\test\resources\stru.png</photo>
+  </contact>
+  <contact>
+    <firstName>LastName2</firstName>
+    <middleName>MiddleName2</middleName>
+    <lastName>FirstName2</lastName>
+    <nick>Nickname2</nick>
+    <address>Test address 2</address>
+    <phoneHome>201234</phoneHome>
+    <phoneMobile>211111</phoneMobile>
+    <phoneWork>222222</phoneWork>
+    <email>email2@test.test</email>
+    <photo>src\test\resources\stru.png</photo>
+  </contact>
+  <contact>
+    <firstName>LastName3</firstName>
+    <middleName>MiddleName3</middleName>
+    <lastName>FirstName3</lastName>
+    <nick>Nickname3</nick>
+    <address>Test address 3</address>
+    <phoneHome>301234</phoneHome>
+    <phoneMobile>311111</phoneMobile>
+    <phoneWork>322222</phoneWork>
+    <email>email3@test.test</email>
+    <photo>src\test\resources\stru.png</photo>
+  </contact>
+  <contact>
+    <firstName>LastName4</firstName>
+    <middleName>MiddleName4</middleName>
+    <lastName>FirstName4</lastName>
+    <nick>Nickname4</nick>
+    <address>Test address 4</address>
+    <phoneHome>401234</phoneHome>
+    <phoneMobile>411111</phoneMobile>
+    <phoneWork>422222</phoneWork>
+    <email>email4@test.test</email>
+    <photo>src\test\resources\stru.png</photo>
+  </contact>
+  <contact>
+    <firstName>LastName5</firstName>
+    <middleName>MiddleName5</middleName>
+    <lastName>FirstName5</lastName>
+    <nick>Nickname5</nick>
+    <address>Test address 5</address>
+    <phoneHome>501234</phoneHome>
+    <phoneMobile>511111</phoneMobile>
+    <phoneWork>522222</phoneWork>
+    <email>email5@test.test</email>
+    <photo>src\test\resources\stru.png</photo>
+  </contact>
+  <contact>
+    <firstName>LastName6</firstName>
+    <middleName>MiddleName6</middleName>
+    <lastName>FirstName6</lastName>
+    <nick>Nickname6</nick>
+    <address>Test address 6</address>
+    <phoneHome>601234</phoneHome>
+    <phoneMobile>611111</phoneMobile>
+    <phoneWork>622222</phoneWork>
+    <email>email6@test.test</email>
+    <photo>src\test\resources\stru.png</photo>
+  </contact>
+  <contact>
+    <firstName>LastName7</firstName>
+    <middleName>MiddleName7</middleName>
+    <lastName>FirstName7</lastName>
+    <nick>Nickname7</nick>
+    <address>Test address 7</address>
+    <phoneHome>701234</phoneHome>
+    <phoneMobile>711111</phoneMobile>
+    <phoneWork>722222</phoneWork>
+    <email>email7@test.test</email>
+    <photo>src\test\resources\stru.png</photo>
+  </contact>
+  <contact>
+    <firstName>LastName8</firstName>
+    <middleName>MiddleName8</middleName>
+    <lastName>FirstName8</lastName>
+    <nick>Nickname8</nick>
+    <address>Test address 8</address>
+    <phoneHome>801234</phoneHome>
+    <phoneMobile>811111</phoneMobile>
+    <phoneWork>822222</phoneWork>
+    <email>email8@test.test</email>
+    <photo>src\test\resources\stru.png</photo>
+  </contact>
+  <contact>
+    <firstName>LastName9</firstName>
+    <middleName>MiddleName9</middleName>
+    <lastName>FirstName9</lastName>
+    <nick>Nickname9</nick>
+    <address>Test address 9</address>
+    <phoneHome>901234</phoneHome>
+    <phoneMobile>911111</phoneMobile>
+    <phoneWork>922222</phoneWork>
+    <email>email9@test.test</email>
+    <photo>src\test\resources\stru.png</photo>
+  </contact>
+</list>
