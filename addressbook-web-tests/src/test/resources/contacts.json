@@ -9,7 +9,7 @@
     "phoneMobile": "011111",
     "phoneWork": "022222",
     "email": "email0@test.test",
-    "photo": {}
+    "photo": "src\\test\\resources\\stru.png"
   },
   {
     "firstName": "LastName1",
@@ -21,7 +21,7 @@
     "phoneMobile": "111111",
     "phoneWork": "122222",
     "email": "email1@test.test",
-    "photo": {}
+    "photo": "src\\test\\resources\\stru.png"
   },
   {
     "firstName": "LastName2",
@@ -33,90 +33,6 @@
     "phoneMobile": "211111",
     "phoneWork": "222222",
     "email": "email2@test.test",
-    "photo": {}
-  },
-  {
-    "firstName": "LastName3",
-    "middleName": "MiddleName3",
-    "lastName": "FirstName3",
-    "nick": "Nickname3",
-    "address": "Test address 3",
-    "phoneHome": "301234",
-    "phoneMobile": "311111",
-    "phoneWork": "322222",
-    "email": "email3@test.test",
-    "photo": {}
-  },
-  {
-    "firstName": "LastName4",
-    "middleName": "MiddleName4",
-    "lastName": "FirstName4",
-    "nick": "Nickname4",
-    "address": "Test address 4",
-    "phoneHome": "401234",
-    "phoneMobile": "411111",
-    "phoneWork": "422222",
-    "email": "email4@test.test",
-    "photo": {}
-  },
-  {
-    "firstName": "LastName5",
-    "middleName": "MiddleName5",
-    "lastName": "FirstName5",
-    "nick": "Nickname5",
-    "address": "Test address 5",
-    "phoneHome": "501234",
-    "phoneMobile": "511111",
-    "phoneWork": "522222",
-    "email": "email5@test.test",
-    "photo": {}
-  },
-  {
-    "firstName": "LastName6",
-    "middleName": "MiddleName6",
-    "lastName": "FirstName6",
-    "nick": "Nickname6",
-    "address": "Test address 6",
-    "phoneHome": "601234",
-    "phoneMobile": "611111",
-    "phoneWork": "622222",
-    "email": "email6@test.test",
-    "photo": {}
-  },
-  {
-    "firstName": "LastName7",
-    "middleName": "MiddleName7",
-    "lastName": "FirstName7",
-    "nick": "Nickname7",
-    "address": "Test address 7",
-    "phoneHome": "701234",
-    "phoneMobile": "711111",
-    "phoneWork": "722222",
-    "email": "email7@test.test",
-    "photo": {}
-  },
-  {
-    "firstName": "LastName8",
-    "middleName": "MiddleName8",
-    "lastName": "FirstName8",
-    "nick": "Nickname8",
-    "address": "Test address 8",
-    "phoneHome": "801234",
-    "phoneMobile": "811111",
-    "phoneWork": "822222",
-    "email": "email8@test.test",
-    "photo": {}
-  },
-  {
-    "firstName": "LastName9",
-    "middleName": "MiddleName9",
-    "lastName": "FirstName9",
-    "nick": "Nickname9",
-    "address": "Test address 9",
-    "phoneHome": "901234",
-    "phoneMobile": "911111",
-    "phoneWork": "922222",
-    "email": "email9@test.test",
-    "photo": {}
+    "photo": "src\\test\\resources\\stru.png"
   }
 ]
