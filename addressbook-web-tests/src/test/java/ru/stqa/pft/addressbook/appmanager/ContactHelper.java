@@ -32,8 +32,10 @@ public class ContactHelper extends HelperBase {
     type(By.name("mobile"), contactData.getPhoneMobile());
     type(By.name("work"), contactData.getPhoneWork());
     type(By.name("email"), contactData.getEmail());
-    type(By.name("email2"), contactData.getEmailSecond());
-    type(By.name("email3"), contactData.getEmailThird());
+    if(contactData.getEmailSecond() != null){
+    type(By.name("email2"), contactData.getEmailSecond());}
+    if(contactData.getEmailThird() != null){
+    type(By.name("email3"), contactData.getEmailThird());}
     attach(By.name("photo"), contactData.getPhoto());
   }
 

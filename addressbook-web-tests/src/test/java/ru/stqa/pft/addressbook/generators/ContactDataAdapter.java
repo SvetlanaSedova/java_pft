@@ -2,9 +2,11 @@ package ru.stqa.pft.addressbook.generators;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.io.File;
 import java.io.IOException;
 
 public class ContactDataAdapter extends TypeAdapter <ContactData> {
@@ -36,7 +38,61 @@ public class ContactDataAdapter extends TypeAdapter <ContactData> {
   }
 
   @Override
-  public ContactData read(JsonReader in) throws IOException {
-    return null;
+  public ContactData read(JsonReader reader) throws IOException {
+    ContactData contact = new ContactData();
+    reader.beginObject();
+    String fieldname = null;
+    while (reader.hasNext()) {
+      JsonToken token = reader.peek();
+
+      if (token.equals(JsonToken.NAME)) {
+        //get the current token
+        fieldname = reader.nextName();
+      }
+
+      if ("firstName".equals(fieldname)) {
+        token = reader.peek();
+        contact.withFirstName(reader.nextString());
+      }
+
+      if("middleName".equals(fieldname)) {
+        token = reader.peek();
+        contact.withMiddleName(reader.nextString());
+      }
+      if("lastName".equals(fieldname)) {
+        token = reader.peek();
+        contact.withLastName(reader.nextString());
+      }
+      if("nick".equals(fieldname)) {
+        token = reader.peek();
+        contact.withNick(reader.nextString());
+      }
+      if("address".equals(fieldname)) {
+        token = reader.peek();
+        contact.withAddress(reader.nextString());
+      }
+      if("phoneHome".equals(fieldname)) {
+        token = reader.peek();
+        contact.withPhoneHome(reader.nextString());
+      }
+      if("phoneMobile".equals(fieldname)) {
+        token = reader.peek();
+        contact.withPhoneMobile(reader.nextString());
+      }
+      if("phoneWork".equals(fieldname)) {
+        token = reader.peek();
+        contact.withPhoneWork(reader.nextString());
+      }
+      if("email".equals(fieldname)) {
+        token = reader.peek();
+        contact.withEmail(reader.nextString());
+      }
+      if("photo".equals(fieldname)) {
+        token = reader.peek();
+        contact.withPhoto(new File(reader.nextString()));
+      }
+    }
+    reader.endObject();
+   return contact;
   }
 }

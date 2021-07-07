@@ -1,8 +1,8 @@
 [
   {
-    "firstName": "LastName0",
+    "firstName": "FirstName0",
     "middleName": "MiddleName0",
-    "lastName": "FirstName0",
+    "lastName": "LastName0",
     "nick": "Nickname0",
     "address": "Test address 0",
     "phoneHome": "001234",
@@ -12,9 +12,9 @@
     "photo": "src\\test\\resources\\stru.png"
   },
   {
-    "firstName": "LastName1",
+    "firstName": "FirstName1",
     "middleName": "MiddleName1",
-    "lastName": "FirstName1",
+    "lastName": "LastName1",
     "nick": "Nickname1",
     "address": "Test address 1",
     "phoneHome": "101234",
@@ -24,9 +24,9 @@
     "photo": "src\\test\\resources\\stru.png"
   },
   {
-    "firstName": "LastName2",
+    "firstName": "FirstName2",
     "middleName": "MiddleName2",
-    "lastName": "FirstName2",
+    "lastName": "LastName2",
     "nick": "Nickname2",
     "address": "Test address 2",
     "phoneHome": "201234",
