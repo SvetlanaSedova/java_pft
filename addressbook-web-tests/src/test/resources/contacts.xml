@@ -1,8 +1,8 @@
 <list>
   <contact>
-    <firstName>LastName0</firstName>
+    <firstName>FirstName0</firstName>
     <middleName>MiddleName0</middleName>
-    <lastName>FirstName0</lastName>
+    <lastName>LastName0</lastName>
     <nick>Nickname0</nick>
     <address>Test address 0</address>
     <phoneHome>001234</phoneHome>
@@ -12,9 +12,9 @@
     <photo>src\test\resources\stru.png</photo>
   </contact>
   <contact>
-    <firstName>LastName1</firstName>
+    <firstName>FirstName1</firstName>
     <middleName>MiddleName1</middleName>
-    <lastName>FirstName1</lastName>
+    <lastName>LastName1</lastName>
     <nick>Nickname1</nick>
     <address>Test address 1</address>
     <phoneHome>101234</phoneHome>
@@ -24,27 +24,15 @@
     <photo>src\test\resources\stru.png</photo>
   </contact>
   <contact>
-    <firstName>LastName2</firstName>
+    <firstName>FirstName2</firstName>
     <middleName>MiddleName2</middleName>
-    <lastName>FirstName2</lastName>
+    <lastName>LastName2</lastName>
     <nick>Nickname2</nick>
     <address>Test address 2</address>
     <phoneHome>201234</phoneHome>
     <phoneMobile>211111</phoneMobile>
     <phoneWork>222222</phoneWork>
     <email>email2@test.test</email>
-    <photo>src\test\resources\stru.png</photo>
-  </contact>
-  <contact>
-    <firstName>LastName3</firstName>
-    <middleName>MiddleName3</middleName>
-    <lastName>FirstName3</lastName>
-    <nick>Nickname3</nick>
-    <address>Test address 3</address>
-    <phoneHome>301234</phoneHome>
-    <phoneMobile>311111</phoneMobile>
-    <phoneWork>322222</phoneWork>
-    <email>email3@test.test</email>
     <photo>src\test\resources\stru.png</photo>
   </contact>
 </list>
