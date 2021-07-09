@@ -3,37 +3,66 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
+
+@Entity
+@Table(name = "addressbook")
 @XStreamAlias("contact")
 public class ContactData {
   @XStreamOmitField
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
   @Expose
+  @Column(name = "firstname")
   private String firstName;
   @Expose
+  @Column(name = "middlename")
   private String middleName;
   @Expose
+  @Column(name = "lastname")
   private String lastName;
   @Expose
+  @Column(name = "nickname")
   private String nick;
   @Expose
+  @Column(name = "address")
+  @Type(type = "text")
   private String address;
   @Expose
+  @Column(name = "home")
+  @Type(type = "text")
   private String phoneHome;
   @Expose
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String phoneMobile;
   @Expose
+  @Column(name = "work")
+  @Type(type = "text")
   private String phoneWork;
   @Expose
+  @Column(name = "email")
+  @Type(type = "text")
   private String email;
+  @Column(name = "email2")
+  @Type(type = "text")
   private String emailSecond;
+  @Column(name = "email3")
+  @Type(type = "text")
   private String emailThird;
+  @Transient
   private String allPhones;
+  @Transient
   private String allEmails;
   @Expose
-  private File photo;
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
 
   public String getFirstName() {
     return firstName;
@@ -63,7 +92,7 @@ public class ContactData {
     return phoneMobile;
   }
 
-  public String getPhoneWork() { return phoneWork; }
+  public String getPhoneWork() { return phoneWork;  }
 
   public String getEmail() {
     return email;
@@ -73,14 +102,14 @@ public class ContactData {
 
   public String getEmailThird() { return emailThird;  }
 
-  public String getAllEmails() { return allEmails;  }
+  public String getAllEmails() { return allEmails; }
 
-  public int getId() { return id;  }
+  public int getId() { return id; }
 
   public String getAllPhones() { return allPhones; }
 
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
   public ContactData withId(int id) {
@@ -154,7 +183,7 @@ public class ContactData {
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
