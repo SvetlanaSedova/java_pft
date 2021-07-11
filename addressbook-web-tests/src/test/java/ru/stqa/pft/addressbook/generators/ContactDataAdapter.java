@@ -9,7 +9,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import java.io.File;
 import java.io.IOException;
 
-public class ContactDataAdapter extends TypeAdapter <ContactData> {
+public class ContactDataAdapter extends TypeAdapter<ContactData> {
   @Override
   public void write(JsonWriter writer, ContactData contact) throws IOException {
 
@@ -32,6 +32,10 @@ public class ContactDataAdapter extends TypeAdapter <ContactData> {
     writer.value(contact.getPhoneWork());
     writer.name("email");
     writer.value(contact.getEmail());
+    writer.name("email2");
+    writer.value(contact.getEmailSecond());
+    writer.name("email3");
+    writer.value(contact.getEmailThird());
     writer.name("photo");
     writer.value(contact.getPhoto().getPath());
     writer.endObject();
@@ -55,44 +59,52 @@ public class ContactDataAdapter extends TypeAdapter <ContactData> {
         contact.withFirstName(reader.nextString());
       }
 
-      if("middleName".equals(fieldname)) {
+      if ("middleName".equals(fieldname)) {
         token = reader.peek();
         contact.withMiddleName(reader.nextString());
       }
-      if("lastName".equals(fieldname)) {
+      if ("lastName".equals(fieldname)) {
         token = reader.peek();
         contact.withLastName(reader.nextString());
       }
-      if("nick".equals(fieldname)) {
+      if ("nick".equals(fieldname)) {
         token = reader.peek();
         contact.withNick(reader.nextString());
       }
-      if("address".equals(fieldname)) {
+      if ("address".equals(fieldname)) {
         token = reader.peek();
         contact.withAddress(reader.nextString());
       }
-      if("phoneHome".equals(fieldname)) {
+      if ("phoneHome".equals(fieldname)) {
         token = reader.peek();
         contact.withPhoneHome(reader.nextString());
       }
-      if("phoneMobile".equals(fieldname)) {
+      if ("phoneMobile".equals(fieldname)) {
         token = reader.peek();
         contact.withPhoneMobile(reader.nextString());
       }
-      if("phoneWork".equals(fieldname)) {
+      if ("phoneWork".equals(fieldname)) {
         token = reader.peek();
         contact.withPhoneWork(reader.nextString());
       }
-      if("email".equals(fieldname)) {
+      if ("email".equals(fieldname)) {
         token = reader.peek();
         contact.withEmail(reader.nextString());
       }
-      if("photo".equals(fieldname)) {
+      if ("email2".equals(fieldname)) {
+        token = reader.peek();
+        contact.withEmailSecond(reader.nextString());
+      }
+      if ("email3".equals(fieldname)) {
+        token = reader.peek();
+        contact.withEmailThird(reader.nextString());
+      }
+      if ("photo".equals(fieldname)) {
         token = reader.peek();
         contact.withPhoto(new File(reader.nextString()));
       }
     }
     reader.endObject();
-   return contact;
+    return contact;
   }
 }

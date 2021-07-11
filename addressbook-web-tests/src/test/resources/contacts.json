@@ -9,6 +9,8 @@
     "phoneMobile": "011111",
     "phoneWork": "022222",
     "email": "email0@test.test",
+    "email2": "email20@test.test",
+    "email3": "email20@test.test",
     "photo": "src\\test\\resources\\stru.png"
   },
   {
@@ -21,6 +23,8 @@
     "phoneMobile": "111111",
     "phoneWork": "122222",
     "email": "email1@test.test",
+    "email2": "email21@test.test",
+    "email3": "email21@test.test",
     "photo": "src\\test\\resources\\stru.png"
   },
   {
@@ -33,6 +37,8 @@
     "phoneMobile": "211111",
     "phoneWork": "222222",
     "email": "email2@test.test",
+    "email2": "email22@test.test",
+    "email3": "email22@test.test",
     "photo": "src\\test\\resources\\stru.png"
   }
 ]

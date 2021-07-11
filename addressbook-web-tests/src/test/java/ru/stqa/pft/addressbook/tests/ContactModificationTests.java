@@ -12,7 +12,7 @@ public class ContactModificationTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().HomePage();
-    if (app.contact().all().size()==0) {        // проверяем, есть ли контакты для изменения . если нет, то создае
+    if (app.db().contacts().isEmpty()) {        // проверяем, есть ли контакты для изменения . если нет, то создае
       app.goTo().AddingNewContact();
       app.contact().create(new ContactData().withFirstName("First_name_test").withMiddleName("Middle_name_test")
               .withLastName("Last_name_test").withNick("nick").withAddress("address_test")
@@ -23,7 +23,7 @@ public class ContactModificationTests extends TestBase {
 
   @Test
   public void testContactModification() {
-    Contacts before = app.contact().all();  // получение старого списка контактов before
+    Contacts before = app.db().contacts();  // получение старого списка контактов before
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData().withId(modifiedContact.getId())
             .withFirstName("First_name_test1").withMiddleName("Middle_name_test1")
@@ -32,7 +32,7 @@ public class ContactModificationTests extends TestBase {
             .withEmail("test@test.test").withEmailSecond("qwert@qw.qw").withEmailThird("aaaa@aa.aa");
     app.contact().modify(modifiedContact,contact);
     assertThat(app.group().count(),equalTo(before.size()));
-    Contacts after = app.contact().all();     // получение нового списка  контактов after
+    Contacts after = app.db().contacts();     // получение нового списка  контактов after
     assertThat(after, equalTo(before.modified(modifiedContact,contact)));
   }
 }

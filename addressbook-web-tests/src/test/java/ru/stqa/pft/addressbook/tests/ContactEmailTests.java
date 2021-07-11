@@ -15,11 +15,12 @@ public class ContactEmailTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().HomePage();
-    if (app.contact().all().size() == 0) {        // проверяем, есть ли контакты для изменения . если нет, то создае
+    if (app.db().contacts().isEmpty()) {        // проверяем, есть ли контакты для изменения . если нет, то создае
       app.goTo().AddingNewContact();
       app.contact().create(new ContactData().withFirstName("First_name_test").withMiddleName("Middle_name_test")
               .withLastName("Last_name_test").withNick("nick").withAddress("address_test")
-              .withPhoneHome("123456789").withPhoneMobile("987654321").withPhoneWork("1111111").withEmail("test@test.test"));
+              .withPhoneHome("123456789").withPhoneMobile("987654321").withPhoneWork("1111111").withEmail("test@test.test")
+              .withEmailSecond("test2@test.test").withEmailThird("test3@test.test"));
     }
   }
 

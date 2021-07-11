@@ -60,12 +60,12 @@ public class ContactCreationTests extends TestBase {
   @Test(dataProvider = "validContactsXJson")
   public void testContactCreation(ContactData contact) throws Exception {
     app.goTo().HomePage();
-    Contacts before = app.contact().all();  // получение старого множества контактов before
+    Contacts before = app.db().contacts();  // получение старого множества контактов before
     app.goTo().AddingNewContact();
     File photo = new File("src/test/resources/stru.png");
     app.contact().create(contact.withPhoto(photo));
     assertThat(app.contact().count(), equalTo(before.size() + 1));
-    Contacts after = app.contact().all();  // получение нового множества контактов after
+    Contacts after = app.db().contacts();  // получение нового множества контактов after
     assertThat(after, equalTo(before.withAdded(
             contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
