@@ -1,10 +1,15 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.hibernate.Session;
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.List;
 
@@ -32,12 +37,15 @@ public class ContactHelper extends HelperBase {
     type(By.name("mobile"), contactData.getPhoneMobile());
     type(By.name("work"), contactData.getPhoneWork());
     type(By.name("email"), contactData.getEmail());
-    if(contactData.getEmailSecond() != null){
-    type(By.name("email2"), contactData.getEmailSecond());}
-    if(contactData.getEmailThird() != null){
-    type(By.name("email3"), contactData.getEmailThird());}
-    if(contactData.getPhoto() != null){
-    attach(By.name("photo"), contactData.getPhoto());}
+    if (contactData.getEmailSecond() != null) {
+      type(By.name("email2"), contactData.getEmailSecond());
+    }
+    if (contactData.getEmailThird() != null) {
+      type(By.name("email3"), contactData.getEmailThird());
+    }
+    if (contactData.getPhoto() != null) {
+      attach(By.name("photo"), contactData.getPhoto());
+    }
   }
 
   private void selectById(int id) {
@@ -127,5 +135,45 @@ public class ContactHelper extends HelperBase {
     return new ContactData().withId(contact.getId()).withFirstName(firstname)
             .withLastName(lastname).withPhoneHome(home).withPhoneWork(work).withPhoneMobile(mobile)
             .withEmail(email).withEmailSecond(email2).withEmailThird(email3);
+  }
+
+  public void addContactToGroup(ContactData contact, GroupData group) {
+    selectById(contact.getId());
+    Select select = new Select(wd.findElement(By.name("to_group")));
+    select.selectByValue(Integer.toString(group.getId()));
+    wd.findElement(By.name("add")).click();
+  }
+
+  public boolean isContactInGroup(ContactData contact, GroupData group) {
+    Groups groups = contact.getGroups();
+    boolean isItInGroup = false;
+    for (GroupData groupOfContact : groups) {
+      if(groupOfContact.getId() == group.getId()){
+        isItInGroup = true;
+      }
+    }
+    return isItInGroup;
+  }
+
+  public void removeContactFromGroup(ContactData contact, GroupData group) {
+//    wd.findElement(By.name("group")).click();
+    filterContactsByGroupName(group.getName());
+    wd.findElement(By.id(Integer.toString(contact.getId()))).click();
+    wd.findElement(By.name("remove")).click();
+
+  }
+
+  public void filterContactsByGroupName(String groupName) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(groupName);
+  }
+
+  public ContactData GetContactFromSetById(Contacts contacts, int id) {
+    ContactData addedContact = new ContactData();
+    for (ContactData contact : contacts) {
+      if (contact.getId() == id) {
+        addedContact = contact;
+      }
+    }
+    return addedContact;
   }
 }

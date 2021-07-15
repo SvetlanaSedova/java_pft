@@ -249,4 +249,5 @@ public class ContactData {
     return Objects.hash(id, firstName, middleName, lastName, nick, address, phoneHome, phoneMobile, phoneWork, email, emailSecond, emailThird);
   }
 
+
 }
