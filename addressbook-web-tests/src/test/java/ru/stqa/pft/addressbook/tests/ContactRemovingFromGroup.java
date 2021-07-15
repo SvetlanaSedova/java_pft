@@ -40,6 +40,6 @@ public class ContactRemovingFromGroup extends TestBase {
     app.contact().removeContactFromGroup(removedContact, groupForRemoving);
     contacts = app.db().contacts();
     ContactData remContact = app.contact().GetContactFromSetById(contacts, removedContact.getId());
-    MatcherAssert.assertThat("contact not added to the group", !remContact.getGroups().contains(groupForRemoving));
+    MatcherAssert.assertThat("contact not removed from the group", !remContact.getGroups().contains(groupForRemoving));
   }
 }
