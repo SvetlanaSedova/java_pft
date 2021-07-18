@@ -199,4 +199,27 @@ public class ContactHelper extends HelperBase {
     }
     return group;
   }
+
+  public ContactData getContactWithGroup(Contacts contacts) {
+    ContactData contactWithGroup = null;
+    for (ContactData contact : contacts) {
+      if (contact.getGroups().size() != 0) {
+        contactWithGroup = contact;
+        break;
+      }
+    }
+    return contactWithGroup;
+  }
+
+  public GroupData getGroupFromContact(Groups groups, ContactData contact) {
+    GroupData groupFromContact = null;
+    for (GroupData group : groups) { // ищем группу в контакте
+      if (contact.getGroups().contains(group)) {
+        groupFromContact = group;
+        break;
+      }
+    }
+    return groupFromContact;
+  }
+
 }

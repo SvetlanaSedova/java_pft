@@ -34,7 +34,7 @@ public class ContactAddingToGroupTests extends TestBase {
 
     ContactData addingContact = app.contact().getContactWithoutAnyGroup(contacts, groups); // получаем контакт, который не состоит хотя б в одной группе
 
-    if (addingContact == null) {   // если все контакты уже состоят во всех группах, то делаем новый контакт без групп
+    if (addingContact == null) {   // если все контакты уже состоят во всех группах, то добавляем контак без группы
       app.goTo().AddingNewContact();
       app.contact().create(new ContactData().withFirstName("First_name_test1")
               .withMiddleName("Middle_name_test1")
