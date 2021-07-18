@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.hamcrest.MatcherAssert;
+import org.jetbrains.annotations.Nullable;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -29,15 +30,23 @@ public class ContactAddingToGroupTests extends TestBase {
   @Test
   public void testAddingContactToGroup() {
     Contacts contacts = app.db().contacts();
-    Groups groups = app.db().groups(); // получение списка контактов и групп
-    ContactData addingContact = contacts.iterator().next();   //выбор контакта
-    GroupData groupForAdding = groups.iterator().next();  //выбор группы
+    Groups groups = app.db().groups(); // получение списков контактов и групп
 
-    if (app.contact().isContactInGroup(addingContact, groupForAdding)) {
-      app.contact().removeContactFromGroup(addingContact, groupForAdding);
-      app.goTo().HomePage();
-      app.contact().filterContactsByGroupName("[all]");
+    ContactData addingContact = app.contact().getContactWithoutAnyGroup(contacts, groups); // получаем контакт, который не состоит хотя б в одной группе
+
+    if (addingContact == null) {   // если все контакты уже состоят во всех группах, то делаем новый контакт без групп
+      app.goTo().AddingNewContact();
+      app.contact().create(new ContactData().withFirstName("First_name_test1")
+              .withMiddleName("Middle_name_test1")
+              .withLastName("Last_name_test1").withNick("nick1").withAddress("address_test1")
+              .withPhoneHome("1234567891").withPhoneMobile("9876543211").withPhoneWork("1111111")
+              .withEmail("test@test.test").withEmailSecond("qwert@qw.qw").withEmailThird("aaaa@aa.aa"));
+      contacts = app.db().contacts();
+      addingContact = app.contact().getContactWithoutAnyGroup(contacts, groups); // и получаем этот контакт
     }
+
+    GroupData groupForAdding = app.contact().getGroupNotContainsContact(groups, addingContact);  // если найден контакт, которого нет хотя бы в одной группе, ищем такую группу
+
     app.goTo().HomePage();
     app.contact().addContactToGroup(addingContact, groupForAdding);
     contacts = app.db().contacts();
@@ -46,3 +55,7 @@ public class ContactAddingToGroupTests extends TestBase {
             addedContact.getGroups().contains(groupForAdding));
   }
 }
+
+
+
+

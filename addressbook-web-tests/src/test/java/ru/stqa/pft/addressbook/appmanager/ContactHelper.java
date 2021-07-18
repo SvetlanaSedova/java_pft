@@ -176,4 +176,27 @@ public class ContactHelper extends HelperBase {
     }
     return addedContact;
   }
+
+  public ContactData getContactWithoutAnyGroup(Contacts contacts, Groups groups) {
+    ContactData contact = null;
+    for (ContactData contactFromSet : contacts) {                    //ищем контакт, который не находится хотя бы в одной группе
+      if (contactFromSet.getGroups().size() != groups.size()) {
+        contact = contactFromSet;
+        break;
+      }
+    }
+    return contact;
+  }
+
+
+  public GroupData getGroupNotContainsContact(Groups groups, ContactData contact) {
+    GroupData group = null;
+    for (GroupData groupFromSet : groups) {
+      if (!contact.getGroups().contains(groupFromSet)) {
+        group = groupFromSet;
+        break;
+      }
+    }
+    return group;
+  }
 }
