@@ -18,6 +18,7 @@ public class ApplicationManager {
   private String browser;
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
+  private MailHelper mail;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -35,7 +36,12 @@ public class ApplicationManager {
       wd.quit();
     }
   }
-  public String getProperty(String key){
+
+  public HttpSession newSession() {
+    return new HttpSession(this);
+  }
+
+  public String getProperty(String key) {
     return properties.getProperty(key);
   }
 
@@ -60,11 +66,18 @@ public class ApplicationManager {
     }
     return wd;
   }
-  
-  public FtpHelper ftp(){
+
+  public FtpHelper ftp() {
     if (ftp == null) {
       ftp = new FtpHelper(this);
     }
     return ftp;
+  }
+
+  public MailHelper mail() {
+    if (mail == null) {
+      mail = new MailHelper(this);
+    }
+    return mail;
   }
 }
