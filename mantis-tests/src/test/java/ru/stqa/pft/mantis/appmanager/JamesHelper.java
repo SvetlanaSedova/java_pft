@@ -61,7 +61,6 @@ public class JamesHelper {
       out = new PrintStream(telnet.getOutputStream());
     } catch (Exception e) {
       e.printStackTrace();
-      ;
     }
 
     readUntil("Login id:");
