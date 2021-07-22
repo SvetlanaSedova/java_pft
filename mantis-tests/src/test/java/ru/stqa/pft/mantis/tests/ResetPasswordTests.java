@@ -1,9 +1,12 @@
 package ru.stqa.pft.mantis.tests;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.mantis.appmanager.HttpSession;
 import ru.stqa.pft.mantis.model.MailMessage;
+import ru.stqa.pft.mantis.model.User;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -12,29 +15,31 @@ import java.util.List;
 import static org.testng.Assert.assertTrue;
 
 public class ResetPasswordTests extends TestBase {
+
+  @BeforeMethod
+  public void startMailServer() {
+    app.mail().start();
+  }
+
+
   @Test
-  public void testResetPassword() throws MessagingException, IOException {
-    String username = "user1626945367017";
-    String mailPassword = "password";
+  public void testResetPassword() throws IOException {
+
+    User user = app.db().getUsersList().iterator().next();
     String newpassword = "pass" + System.currentTimeMillis();
 
-    int mailboxSize = app.james().getMailboxSize(username, mailPassword);// Чистим ящие, если он не пуст
-    if (mailboxSize != 0) {
-      app.james().drainEmail(username, mailPassword);
-    }
-
     app.resetPass().loginUI(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"));
-    app.resetPass().resetPassword(username);
+    app.resetPass().resetPassword(user.getUsername());
 
+    List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
 
-    List<MailMessage> mailMessages = app.james().waitForMail(username, mailPassword, 60000);
-    System.out.println(mailMessages);
-    String confirmationLink = findConfirmationLink(mailMessages, username+"@localhost");
+    String confirmationLink = findConfirmationLink(mailMessages, user.getEmail());
+
     app.resetPass().changePasswordByLink(confirmationLink, newpassword);
 
     HttpSession session = app.newSession();
-    assertTrue(session.login(username,newpassword));
-    assertTrue(session.isLoggedAs(username));
+    assertTrue(session.login(user.getUsername(), newpassword));
+    assertTrue(session.isLoggedAs(user.getUsername()));
   }
 
 
@@ -43,4 +48,11 @@ public class ResetPasswordTests extends TestBase {
     VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
     return regex.getText(mailMessage.text);
   }
+
+
+  @AfterMethod(alwaysRun = true)
+  public void stopMailServer() {
+    app.mail().stop();
+  }
+
 }
