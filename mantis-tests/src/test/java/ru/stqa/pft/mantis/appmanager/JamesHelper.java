@@ -166,4 +166,10 @@ public class JamesHelper {
       return null;
     }
   }
+
+  public int getMailboxSize(String username, String password) throws MessagingException {
+    initTelnetSession();
+    List<MailMessage> allMail = getAllMail(username,password);
+    return allMail.size();
+  }
 }
