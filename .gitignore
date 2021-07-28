@@ -17,3 +17,6 @@ gradle-app.setting
 .idea/gradle.xml
 .idea/jarRepositories.xml
 .idea/misc.xml
+.idea/libraries/gradle_wrapper.xml
+.idea/modules.xml
+.idea/modules/sandbox.iml
